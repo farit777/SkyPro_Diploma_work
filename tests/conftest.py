@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+#from pages.MainPage import MainPage
 
 @pytest.fixture(scope='module')
 def browser():
@@ -10,10 +11,16 @@ def browser():
     browser = webdriver.Chrome(options=options)
     browser.implicitly_wait(4)
     browser.maximize_window()
-
     yield browser
-
     browser.quit()
+
+# @pytest.fixture(scope="function")
+# def main_page(browser):
+#     main_page = MainPage(browser)
+#     main_page.open()
+#     main_page.close_modal_if_open()
+#     yield main_page
+#     browser.quit()
 
 
 
