@@ -24,34 +24,30 @@ class MoviesPage:
     def open_genres(self):
         genres_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/8/']")
         genres_link.click()
-        # genre_name = self.browser.find_element(By.CSS_SELECTOR, "span.styles_name__G_1mq").text
-        # assert genre_name == "Комедии", "Жанр не найден"
 
     @allure.step("Проверка доступности стран")
     def open_countries(self):
         countries_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/9/']")
         countries_link.click()
-        # country_name = self.browser.find_element(By.CSS_SELECTOR, "span.styles_name__G_1mq").text
-        # assert country_name == "Россия", "Страна не найдена"
 
     @allure.step("Проверка доступности Годы")
-    def open_countries(self):
-        countries_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/7/']")
-        countries_link.click()
+    def open_years(self):
+        years_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/7/']")
+        years_link.click()
 
     @allure.step("Проверка доступности Критика")
     def open_critics(self):
-        countries_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/18/']")
-        countries_link.click()
+        critics_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/18/']")
+        critics_link.click()
 
     @allure.step("Проверка сериалов на странице фильмов")
     def open_series(self):
-        countries_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/3/']")
-        countries_link.click()
+        series_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/3/']")
+        series_link.click()
 
     @allure.step("Проверка сериалов на странице фильмов")
     def open_incoming(self):
-        countries_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/5/']")
-        countries_link.click()
+        incoming_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/5/']")
+        incoming_link.click()
 
     

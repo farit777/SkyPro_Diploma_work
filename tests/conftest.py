@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
-#from pages.MainPage import MainPage
+from pages.MainPage import MainPage
+from pages.MoviesPage import MoviesPage
 
 @pytest.fixture(scope='module')
 def browser():
@@ -14,13 +15,20 @@ def browser():
     yield browser
     browser.quit()
 
-# @pytest.fixture(scope="function")
-# def main_page(browser):
-#     main_page = MainPage(browser)
-#     main_page.open()
-#     main_page.close_modal_if_open()
-#     yield main_page
-#     browser.quit()
+@pytest.fixture(scope='module')
+def movies_page(browser):
+    movies_page = MoviesPage(browser)
+    movies_page.open()
+    movies_page.close_modal_if_open()  # Закрытие модального окна, если открыто
+    yield movies_page
+
+@pytest.fixture(scope='function')
+def main_page(browser):
+    main_page = MoviesPage(browser)
+    main_page.open()
+    main_page.close_modal_if_open()  # Закрытие модального окна, если открыто
+    yield main_page
+
 
 
 
@@ -28,15 +36,3 @@ def browser():
 #     options = webdriver.FirefoxOptions()
 #     options.browser_version = 'stable'
 #     driver = webdriver.Firefox(options=options)
-
-# import pytest
-# from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service
-# from webdriver_manager.chrome import ChromeDriverManager
-
-# @pytest.fixture(scope="module")
-# def setup():
-#     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-#     driver.get("https://www.kinopoisk.ru")
-#     yield driver
-#     driver.quit()
