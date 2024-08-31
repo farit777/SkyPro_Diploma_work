@@ -1,14 +1,18 @@
 import pytest
 from selenium import webdriver
-from pages.MainPage import MainPage
 from pages.MoviesPage import MoviesPage
 
 @pytest.fixture(scope='module')
 def browser():
+    """
+    Функция `browser` - это фикстура для тестирования с использованием Selenium WebDriver.
+    Фикстура создаёт экземпляр браузера Chrome с заданными параметрами и обеспечивает его корректное завершение после выполнения тестов.
+    Возвращаемое значение:
+    WebDriver: Возвращает объект WebDriver для браузера Chrome, который можно использовать в тестах.
+    """
     options = webdriver.ChromeOptions()
     options.browser_version = 'stable'
     options.platform_name = 'any'
-    #options.accept_insecure_certs = True
     browser = webdriver.Chrome(options=options)
     browser.implicitly_wait(4)
     browser.maximize_window()
@@ -17,22 +21,19 @@ def browser():
 
 @pytest.fixture(scope='module')
 def movies_page(browser):
+    """
+    Функция `movies_page` - это фикстура для тестирования страницы фильмов, используется вместе с Selenium WebDriver.
+    Фикстура создаёт экземпляр страницы фильмов и выполняет начальные действия для её подготовки к тестированию.
+    Возвращаемое значение:
+    MoviesPage: Возвращает объект страницы фильмов, который можно использовать в тестах.
+    """
     movies_page = MoviesPage(browser)
     movies_page.open()
     movies_page.close_modal_if_open()  # Закрытие модального окна, если открыто
     yield movies_page
 
-@pytest.fixture(scope='function')
-def main_page(browser):
-    main_page = MoviesPage(browser)
-    main_page.open()
-    main_page.close_modal_if_open()  # Закрытие модального окна, если открыто
-    yield main_page
 
 
 
 
-# def FireFox_options():
-#     options = webdriver.FirefoxOptions()
-#     options.browser_version = 'stable'
-#     driver = webdriver.Firefox(options=options)
+

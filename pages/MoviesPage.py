@@ -9,10 +9,12 @@ class MoviesPage:
 
     @allure.step("Открываем страницу фильмов Кинопоиска")
     def open(self):
+        """Открывает страницу фильмов"""
         self.browser.get(self.url)
 
     @allure.step("Закрыть модальное окно, если оно открыто")
     def close_modal_if_open(self):
+        """Функция закрывает модальное окно, если оно присутствует"""
         try:
             modal_close_button = self.browser.find_element(By.CSS_SELECTOR, "body > div.ReactModalPortal > div > div > div > div:nth-child(1) > div.styles_buttonContainer__R98ro > button.style_button__PNtXT.style_buttonSize48__7RF4w.style_secondaryTransparent__ehaDu.style_buttonDark__beFpy.style_fullWidth__Kw7rX")
             modal_close_button.click()
@@ -22,31 +24,31 @@ class MoviesPage:
 
     @allure.step("Проверка доступности жанров")
     def open_genres(self):
+        """Открывает страницу жанров по ссылке"""
         genres_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/8/']")
         genres_link.click()
 
-    @allure.step("Проверка доступности стран")
+    @allure.step("Проверка доступности стран по ссылке")
     def open_countries(self):
+        """Открывает страницу стран"""
         countries_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/9/']")
         countries_link.click()
 
-    @allure.step("Проверка доступности Годы")
+    @allure.step("Проверка доступности Годы по ссылке")
     def open_years(self):
+        """Открывает страницу Годы"""
         years_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/7/']")
         years_link.click()
 
-    @allure.step("Проверка доступности Критика")
+    @allure.step("Проверка доступности Критика по ссылке")
     def open_critics(self):
+        """Отрывает страницу отзывов"""
         critics_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/18/']")
         critics_link.click()
 
-    @allure.step("Проверка сериалов на странице фильмов")
-    def open_series(self):
-        series_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/3/']")
-        series_link.click()
-
-    @allure.step("Проверка сериалов на странице фильмов")
+    @allure.step("Проверка сериалов на странице фильмов по ссылке")
     def open_incoming(self):
+        """Открывает страницу поступлений за фильмы"""
         incoming_link = self.browser.find_element(By.CSS_SELECTOR, "a[href='/lists/categories/movies/5/']")
         incoming_link.click()
 
